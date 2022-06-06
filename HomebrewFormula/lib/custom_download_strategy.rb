@@ -10,12 +10,11 @@ require "download_strategy"
 # works with public one, but in that case simply use CurlDownloadStrategy.
 class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   require "utils/formatter"
-  require "utils/github"
 
   def initialize(url, name, version, **meta)
     super
-    parse_url_pattern
     set_github_token
+    parse_url_pattern
   end
 
   def parse_url_pattern
@@ -37,9 +36,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def set_github_token
-    @github_token = ENV["HOMEBREW_SCALEOPS_TOKEN"]
-    ENV.store('GITHUB_TOKEN', @github_token)
-    ENV.store('HOMEBREW_GITHUB_TOKEN', @github_token)
+    @github_token = ENV.fetch("HOMEBREW_SCALEOPS_TOKEN")
     unless @github_token
       raise CurlDownloadStrategyError, "Environmental variable HOMEBREW_SCALEOPS_TOKEN is required."
     end
@@ -84,12 +81,12 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
     release_metadata = fetch_release_metadata
     assets = release_metadata["assets"].select { |a| a["name"] == @filename }
     raise CurlDownloadStrategyError, "Asset file not found." if assets.empty?
-
     assets.first["id"]
   end
 
   def fetch_release_metadata
     release_url = "https://api.github.com/repos/#{@owner}/#{@repo}/releases/tags/#{@tag}"
-    GitHub::API.open_rest(release_url)
+    result = curl release_url, "--header", "Accept: application/vnd.github.v3+json", "--header", "Authorization: token #{@github_token}"
+    JSON.parse!(result.stdout)
   end
 end
