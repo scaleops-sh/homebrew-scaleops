@@ -6,12 +6,12 @@ require_relative "lib/custom_download_strategy"
 class Scaleops < Formula
   desc "CLI"
   homepage "https://scaleops.sh/"
-  version "0.0.8"
+  version "0.0.9"
   license "Private"
 
   on_macos do
-    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.8/scaleops_0.0.8_darwin_all.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "c491a2e6ff13fe3956467df53d6b3b517e7b7d4e17420fbf752f000478f2f806"
+    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.9/scaleops_0.0.9_darwin_all.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "cf909cc811fc77808e1a9b73c6046970e7a7dfe5b5ce08444be4c9c550051878"
 
     def install
       bin.install "scaleops"
@@ -20,16 +20,16 @@ class Scaleops < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.8/scaleops_0.0.8_linux_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "a3b34f81f979e3a638835fa99a2b5fe2ae1c5b12ed0f6710e8be8bc75f35df7f"
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.9/scaleops_0.0.9_linux_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "8be116c24baa5f8473eb7f7312ed7e5e5d21ff9791aaea2c128c597c1c6d071d"
 
       def install
         bin.install "scaleops"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.8/scaleops_0.0.8_linux_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "054658f72f344bf6ff166488f8971f84c16f4eaccffba0ebafe344ec1adfc72f"
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.9/scaleops_0.0.9_linux_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "277729dafb3023ad924a89687785fe9a99946337a4c11fc90c5897c6f4e09f7f"
 
       def install
         bin.install "scaleops"
