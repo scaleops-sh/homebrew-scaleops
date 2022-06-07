@@ -6,12 +6,12 @@ require_relative "lib/custom_download_strategy"
 class Scaleops < Formula
   desc "CLI"
   homepage "https://scaleops.sh/"
-  version "0.0.10"
+  version "0.0.11"
   license "Private"
 
   on_macos do
-    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.10/scaleops_0.0.10_darwin_all.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "9977d8b64cb91310682de3658412676940987914ad2061374fdd93deedc42c15"
+    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.11/scaleops_0.0.11_darwin_all.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "7ba0244d4ddb4730c27763064f5421f15ca8100d9aece5ae60346034b69ba79a"
 
     def install
       bin.install "scaleops"
@@ -19,17 +19,17 @@ class Scaleops < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.10/scaleops_0.0.10_linux_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "08879f7310d856baa377b04194ce85a884dd7d5200fa71b03be5960f073f24fa"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.11/scaleops_0.0.11_linux_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "db9faded7e2d421a85b51e5f874550c2632ac792a42de1f1647b79161db2fa4f"
 
       def install
         bin.install "scaleops"
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.10/scaleops_0.0.10_linux_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "3b1f3b4d252dbcb0f774d98a4ea780f02218a186594a37e9d6d9c5a6b8fcaf13"
+    if Hardware::CPU.intel?
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.11/scaleops_0.0.11_linux_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "8474aff3fd385d458309a9c58a6c8be2a4aca2d6ae8fbcdddb2c8546efafb41b"
 
       def install
         bin.install "scaleops"
