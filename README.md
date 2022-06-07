@@ -2,9 +2,9 @@
 
 ## How do I install these formulae?
 
-`brew install scaleops-sh/scaleops/<formula>`
+`HOMEBREW_SCALEOPS_TOKEN=***** brew install scaleops-sh/scaleops/scaleops`
 
-Or `brew tap scaleops-sh/scaleops` and then `brew install <formula>`.
+Or `brew tap scaleops-sh/scaleops` and then `HOMEBREW_SCALEOPS_TOKEN=***** brew install scaleops`.
 
 ## Documentation
 
