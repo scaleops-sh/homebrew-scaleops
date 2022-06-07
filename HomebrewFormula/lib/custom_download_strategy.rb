@@ -40,6 +40,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     @github_token = ENV.fetch("HOMEBREW_SCALEOPS_TOKEN")
     # rubocop:disable Layout/LineLength
     raise CurlDownloadStrategyError, "Environmental variable HOMEBREW_SCALEOPS_TOKEN is required." unless @github_token
+    # rubocop:enable Layout/LineLength
   end
 end
 
@@ -68,6 +69,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
     args = [
       download_url, "--header", "Accept: application/octet-stream", "--header", "Authorization: token #{@github_token}"
     ]
+    # rubocop:enable Layout/LineLength
     curl_download(*args, to: temporary_path)
   end
 
@@ -87,6 +89,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
     release_url = "https://api.github.com/repos/#{@owner}/#{@repo}/releases/tags/#{@tag}"
     # rubocop:disable Layout/LineLength
     result = curl release_url, "--header", "Accept: application/vnd.github.v3+json", "--header", "Authorization: token #{@github_token}", show_output: false, print_stdout: false, print_stderr: false
+    # rubocop:enable Layout/LineLength
     JSON.parse!(result.stdout)
   end
 end
