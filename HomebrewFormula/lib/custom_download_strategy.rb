@@ -84,7 +84,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
 
   def fetch_release_metadata
     release_url = "https://api.github.com/repos/#{@owner}/#{@repo}/releases/tags/#{@tag}"
-    result = curl release_url, "--header", "Accept: application/vnd.github.v3+json", "--header", "Authorization: token #{@github_token}"
+    result = curl release_url, "--header", "Accept: application/vnd.github.v3+json", "--header", "Authorization: token #{@github_token}", show_output: false
     JSON.parse!(result.stdout)
   end
 end
