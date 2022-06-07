@@ -38,6 +38,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
 
   def set_github_token
     @github_token = ENV.fetch("HOMEBREW_SCALEOPS_TOKEN")
+    # rubocop:disable Layout/LineLength
     raise CurlDownloadStrategyError, "Environmental variable HOMEBREW_SCALEOPS_TOKEN is required." unless @github_token
   end
 end
@@ -47,7 +48,6 @@ end
 # of your formula. This download strategy uses GitHub access tokens (in the
 # environment variables SCALEOPS_TOKEN) to sign the request.
 class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDownloadStrategy
-
   def parse_url_pattern
     url_pattern = %r{https://github.com/([^/]+)/([^/]+)/releases/download/([^/]+)/(\S+)}
     raise CurlDownloadStrategyError, "Invalid url pattern for Scaleops Release." unless url_pattern.match(@url)
@@ -64,10 +64,11 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   def _fetch(url:, resolved_url:, timeout:)
     # HTTP request header `Accept: application/octet-stream` is required.
     # Without this, the GitHub API will respond with metadata, not binary.
+    # rubocop:disable Layout/LineLength
     args = [
       download_url, "--header", "Accept: application/octet-stream", "--header", "Authorization: token #{@github_token}"
     ]
-    curl_download *args, to: temporary_path
+    curl_download(*args, to: temporary_path)
   end
 
   def asset_id
@@ -84,6 +85,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
 
   def fetch_release_metadata
     release_url = "https://api.github.com/repos/#{@owner}/#{@repo}/releases/tags/#{@tag}"
+    # rubocop:disable Layout/LineLength
     result = curl release_url, "--header", "Accept: application/vnd.github.v3+json", "--header", "Authorization: token #{@github_token}", show_output: false, print_stdout: false, print_stderr: false
     JSON.parse!(result.stdout)
   end
