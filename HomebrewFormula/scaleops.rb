@@ -5,12 +5,12 @@
 class Scaleops < Formula
   desc "CLI"
   homepage "https://scaleops.sh/"
-  version "0.0.12"
+  version "0.0.13"
   license "Private"
 
   on_macos do
-    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.12/scaleops_0.0.12_darwin_all.tar.gz"
-    sha256 "03a73128f34b676573f912cae6d90304042f0c002cd07b941c3244c911488245"
+    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.13/scaleops_0.0.13_darwin_all.tar.gz"
+    sha256 "bccd16729304882ea5c86472916eeb31d5c20c2cf1830cb0ad543a360c7dfae4"
 
     def install
       bin.install "scaleops"
@@ -19,16 +19,16 @@ class Scaleops < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.12/scaleops_0.0.12_linux_arm64.tar.gz"
-      sha256 "bf7b6484381745e1090a4766f6ab785641efd0b9d7b1a63a671590067696e775"
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.13/scaleops_0.0.13_linux_arm64.tar.gz"
+      sha256 "bbc9bc9438df29ac0e6bb2142525a8a1b726c9da9043f15977d2386bb829186c"
 
       def install
         bin.install "scaleops"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.12/scaleops_0.0.12_linux_amd64.tar.gz"
-      sha256 "a96e2a94cdf8268a6d3a5c552a7e014810fb442ea830cc29fc3f0fdd37ab9306"
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.13/scaleops_0.0.13_linux_amd64.tar.gz"
+      sha256 "29cdc97731799629d7079f50992163acfa4a9ed47bd9eb8c38d040077adb9734"
 
       def install
         bin.install "scaleops"
@@ -40,7 +40,9 @@ class Scaleops < Formula
   depends_on "kubectl"
 
   def caveats; <<~EOS
-    How to use this binary
+    Now get the token from scaleops.sh
+    Then run:
+      scaleops system install --token *****
   EOS
   end
 end
