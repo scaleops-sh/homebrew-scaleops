@@ -10,7 +10,7 @@ class Scaleops < Formula
 
   on_macos do
     url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.24/scaleops_0.0.24_darwin_all.tar.gz"
-    sha256 "eca8a16575150aab9332942105e6ef4823e91e04ec909786018a6d35566b759c"
+    sha256 "8b5e9198e7781472fbc24bfc0cda4aee821990f8162e37e1479439cc24297bac"
 
     def install
       bin.install "scaleops"
@@ -23,7 +23,7 @@ class Scaleops < Formula
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.24/scaleops_0.0.24_linux_arm64.tar.gz"
-      sha256 "f4301cf50866ac7cf76f5d12b4144aedc3c5161c72e45f8b588ba03933f4bb89"
+      sha256 "c12e78c418b66296c78f0b54fdf13f845554929487707e9ebdc04ff29c4f5f40"
 
       def install
         bin.install "scaleops"
@@ -34,7 +34,7 @@ class Scaleops < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.24/scaleops_0.0.24_linux_amd64.tar.gz"
-      sha256 "cee2f4628ebf6245c456892f75af5fa963732b72bd02f21b7af8e8d31d6b61bb"
+      sha256 "44183dc3db21806a81e863c5068e68dfe08b86dc90deb3647574fce9b5d4804a"
 
       def install
         bin.install "scaleops"
