@@ -5,42 +5,42 @@
 class Scaleops < Formula
   desc "CLI"
   homepage "https://scaleops.sh/"
-  version "0.0.24"
+  version "0.0.25"
   license "Private"
 
   on_macos do
-    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.24/scaleops_0.0.24_darwin_all.tar.gz"
-    sha256 "8b5e9198e7781472fbc24bfc0cda4aee821990f8162e37e1479439cc24297bac"
+    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.25/scaleops_0.0.25_darwin_all.tar.gz"
+    sha256 "88becc18131c87fcaf4f3b41cac2724dc9408d8369ca3b153c03cc67701988e4"
 
     def install
       bin.install "scaleops"
-      (bash_completion/"scaleops").write `#{bin}/scaleops completion -s bash`
-      (fish_completion/"scaleops.fish").write `#{bin}/scaleops completion -s fish`
-      (zsh_completion/"_scaleops").write `#{bin}/scaleops completion -s zsh`
+      (bash_completion/"scaleops").write `#{bin}/scaleops completion bash`
+      (fish_completion/"scaleops.fish").write `#{bin}/scaleops completion fish`
+      (zsh_completion/"_scaleops").write `#{bin}/scaleops completion zsh`
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.24/scaleops_0.0.24_linux_arm64.tar.gz"
-      sha256 "c12e78c418b66296c78f0b54fdf13f845554929487707e9ebdc04ff29c4f5f40"
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.25/scaleops_0.0.25_linux_arm64.tar.gz"
+      sha256 "2154cb1fa68ca45c0f184e6bcda36f7972af8a0f595a13fcd7ddaa8f33c66677"
 
       def install
         bin.install "scaleops"
-        (bash_completion/"scaleops").write `#{bin}/scaleops completion -s bash`
-        (fish_completion/"scaleops.fish").write `#{bin}/scaleops completion -s fish`
-        (zsh_completion/"_scaleops").write `#{bin}/scaleops completion -s zsh`
+        (bash_completion/"scaleops").write `#{bin}/scaleops completion bash`
+        (fish_completion/"scaleops.fish").write `#{bin}/scaleops completion fish`
+        (zsh_completion/"_scaleops").write `#{bin}/scaleops completion zsh`
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.24/scaleops_0.0.24_linux_amd64.tar.gz"
-      sha256 "44183dc3db21806a81e863c5068e68dfe08b86dc90deb3647574fce9b5d4804a"
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.25/scaleops_0.0.25_linux_amd64.tar.gz"
+      sha256 "7d1a13e3353aaae1946a38a0c952841bc061b3c72a6c1afe4a5188c138f5b12c"
 
       def install
         bin.install "scaleops"
-        (bash_completion/"scaleops").write `#{bin}/scaleops completion -s bash`
-        (fish_completion/"scaleops.fish").write `#{bin}/scaleops completion -s fish`
-        (zsh_completion/"_scaleops").write `#{bin}/scaleops completion -s zsh`
+        (bash_completion/"scaleops").write `#{bin}/scaleops completion bash`
+        (fish_completion/"scaleops.fish").write `#{bin}/scaleops completion fish`
+        (zsh_completion/"_scaleops").write `#{bin}/scaleops completion zsh`
       end
     end
   end
