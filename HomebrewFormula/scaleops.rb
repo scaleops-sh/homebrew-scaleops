@@ -5,12 +5,12 @@
 class Scaleops < Formula
   desc "CLI"
   homepage "https://scaleops.sh/"
-  version "0.0.55"
+  version "0.0.56"
   license "Private"
 
   on_macos do
-    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.55/scaleops_0.0.55_darwin_all.tar.gz"
-    sha256 "05db562e4a25db5976c58b759005906adbe0c4baffefd464a25e90049b2ef3fe"
+    url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.56/scaleops_0.0.56_darwin_all.tar.gz"
+    sha256 "8e07835ac63e9e20aad87995acebc9d0822ec596f10655cf971b994ddcecb613"
 
     def install
       bin.install "scaleops"
@@ -21,9 +21,9 @@ class Scaleops < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.55/scaleops_0.0.55_linux_amd64.tar.gz"
-      sha256 "6b54ff74d9578bad8726408cca166cf7fbf663668a9d79b2aef44acc7e5354db"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.56/scaleops_0.0.56_linux_arm64.tar.gz"
+      sha256 "da2724767f4102961a5593c09521f096099ea34c5a5797c75c4af3fc0ac20232"
 
       def install
         bin.install "scaleops"
@@ -32,9 +32,9 @@ class Scaleops < Formula
         (zsh_completion/"_scaleops").write `#{bin}/scaleops completion zsh`
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.55/scaleops_0.0.55_linux_arm64.tar.gz"
-      sha256 "7616396c150495e4e175fbaf4ccafe33c3407a4db6283a29fbb8a6755e60d933"
+    if Hardware::CPU.intel?
+      url "https://github.com/scaleops-sh/scaleops-sh/releases/download/v0.0.56/scaleops_0.0.56_linux_amd64.tar.gz"
+      sha256 "21c96b6d6d5b0db3d1346acc84771a91e25fa3f2c596b0111bc19d2997c5e571"
 
       def install
         bin.install "scaleops"
